@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.br.CPF;
 
-import com.example.AuthorsObras.constraints.Sexo;
+import com.example.AuthorsObras.constraints.Genero;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
@@ -30,7 +30,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //Cria o construtor vazio
 @AllArgsConstructor //Cria o construtor preenchido
 @Entity //Define a classe como uma entidade
-@Table(name = "tb_autores") //Defini o nome da tabela no BD
+@Table(name = "tb_autores") //Define o nome da tabela no BD
 public class Autor {
     
     @Id //Define o atributo mapeado como id da classe
@@ -42,7 +42,7 @@ public class Autor {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING) //O valor do Enum será convertido para String
-    private Sexo sexo;
+    private Genero genero;
     
     @Email(message = "Email não é válido", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$") //Email não obrigatorio, regex para verificacao de email valido
     @Column(unique = true) //Define que o email é unico

@@ -1,6 +1,7 @@
 package com.example.AuthorsObras.constraints;
 
-public enum Sexo {
+public enum Genero {
     FEMININO,
-    MASCULINO;
+    MASCULINO,
+    PREFIRO_NÃO_INFORMAR;
 }

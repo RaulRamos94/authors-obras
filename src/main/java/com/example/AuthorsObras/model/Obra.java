@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //Cria o construtor vazio
 @AllArgsConstructor //Cria o construtor preenchido
 @Entity //Define a classe como uma entidade
-@Table(name = "tb_obras") //Defini o nome da tabela no BD
+@Table(name = "tb_obras") //Define o nome da tabela no BD
 public class Obra {
     
     @Id //Define o atributo mapeado como id da classe

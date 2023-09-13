@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS tb_autores(
 
     idAutor BIGINT(20) NOT NULL AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
-    sexo VARCHAR(20) NOT NULL,
+    genero VARCHAR(20) NOT NULL,
     email VARCHAR(100) NOT NULL,
     dataNascimento DATE,
     nacionalidade VARCHAR(2) NOT NULL,
