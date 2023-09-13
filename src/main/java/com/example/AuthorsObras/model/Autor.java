@@ -19,6 +19,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -30,7 +31,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //Cria o construtor vazio
 @AllArgsConstructor //Cria o construtor preenchido
 @Entity //Define a classe como uma entidade
-@Table(name = "tb_autores") //Define o nome da tabela no BD
+@Table(name = "tb_autores", uniqueConstraints = {@UniqueConstraint(columnNames = {"cpf"})}) //Define o nome da tabela no BD
 public class Autor {
     
     @Id //Define o atributo mapeado como id da classe
