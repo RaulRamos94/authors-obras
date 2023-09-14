@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
     <title>Autores</title>
 </head>
 <body>
-    <div class="box">
+    <div class="cadastrarAutor">
         <h1><b>Cadastro Autor</b></h1>
-        <input type="text" placeholder="Nome"><br><br>
-        <input type="text" placeholder="CPF"><br><br>
-        <input type="text" placeholder="Sexo"><br><br>
-        <input type="text" placeholder="E-mail"><br><br>
-        <input type="text" placeholder="Data de nascimento"><br><br>
-        <input type="text" placeholder="Nacionalidade"><br><br>
-        <button name="cadastrarAutor"><b>Cadastrar</b></button>
+        <form action="">
+            <input type="text" class="nome" name="nome" placeholder="Nome"><br><br>
+            <input type="text" class="cpf" name="cpf" placeholder="CPF"><br><br>
+            <input type="text" class="genero" name="genero" placeholder="Genero"><br><br>
+            <input type="text" class="email" name="email" placeholder="E-mail"><br><br>
+            <input type="text" class="dataNascimento" name="dataNascimento" placeholder="Data de nascimento"><br><br>
+            <input type="text" class="nacionalidade" name="nacionalidade" placeholder="Nacionalidade"><br><br>
+            <button name="cadastrarAutor"><b>Cadastrar</b></button>
+        </form>
     </div>
 </body>
 </html>

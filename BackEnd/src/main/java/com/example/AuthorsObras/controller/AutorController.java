@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.AuthorsObras.model.Autor;
 import com.example.AuthorsObras.repository.AutorRepository;
 
-
 @RestController
 @RequestMapping(value = "/authors")
 public class AutorController {
