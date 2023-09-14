@@ -1,5 +1,6 @@
 package com.example.AuthorsObras.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.AuthorsObras.model.Autor;
 import com.example.AuthorsObras.repository.AutorRepository;
+
 
 @RestController
 @RequestMapping(value = "/authors")
@@ -68,11 +70,12 @@ public class AutorController {
     public ResponseEntity<String> excluirAutor(@PathVariable Long id){
         Optional<Autor> autor = autorRepository.findById(id);
 
-        if(autor.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        if(autor.isPresent()){
+            autorRepository.deleteById(id);
+            return ResponseEntity.ok().body("Autor excluído com sucesso!");
         }
-        autorRepository.deleteById(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Autor excluído com sucesso!");       
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+               
     }
     
 }
