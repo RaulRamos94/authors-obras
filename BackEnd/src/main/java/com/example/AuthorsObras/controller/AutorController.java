@@ -66,7 +66,7 @@ public class AutorController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
     
-    @DeleteMapping("/{id}") //Excluir Autor por Id
+    @DeleteMapping("/{id}") //Excluir autor por Id
     public ResponseEntity<String> excluirAutor(@PathVariable Long id){
         Optional<Autor> autor = autorRepository.findById(id);
 
