@@ -1,5 +1,6 @@
 package com.example.AuthorsObras.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,8 @@ public class AutorController {
     }
 
     @GetMapping(value = "/listarAutores") //Listar todos os Autores
-    public ResponseEntity<Page<Autor>> listarAutores(Pageable paginacao){
-        return ResponseEntity.status(HttpStatus.OK).body(autorRepository.findAll(paginacao));
+    public List<Autor> listarAutores(){
+        return autorRepository.findAll();
     }
 
     @GetMapping("/{id}") //Listar Autor por Id
