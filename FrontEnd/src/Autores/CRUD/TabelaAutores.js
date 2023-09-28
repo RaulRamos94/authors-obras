@@ -1,4 +1,4 @@
-function TabelaAutores({vetor}) {
+function TabelaAutores({vetor, selecionar}) {
 
     return(
        <table className="table">
@@ -24,7 +24,7 @@ function TabelaAutores({vetor}) {
                         <td>{obj.dataNascimento}</td>
                         <td>{obj.cpf}</td>
                         <td>{obj.nacionalidade}</td>
-                        <td><button className="btn btn-success">Selecionar</button></td>
+                        <td><button onClick={() => {selecionar(indice)}} className="btn btn-success">Selecionar</button></td>
                     </tr>
                     ))
                 }

@@ -22,7 +22,7 @@ function App() {
 
   //Cadastrar Autor
   const cadastrarAutor = () => {
-    fetch("http://localhost:8080/authors/cadastrarAutor", {
+    fetch("http://localhost:8080/authors/cadastrarAutor",{
       method: "post",
       body: JSON.stringify(objAutor),
       headers:{
@@ -37,6 +37,7 @@ function App() {
       }else{
         setAutores([...autores, retornoConvertido])
         alert("Autor cadastrado com sucesso!")
+        limparFormulario();
       }
     })
   }
@@ -52,15 +53,23 @@ function App() {
     setObjAutor({...objAutor, [e.target.name]:e.target.value});
   }
 
-
-
-
-
+  //Limpar Formulario
+  const limparFormulario = ()=> {
+    setObjAutor(autor);
+  }
   
+  const selecionarAutor = (indice) => {
+    setObjAutor(autores[indice]);
+    setBtnCadastrar(false);
+  }
+
+
+
+
   return (
     <div>
-      <Autor botao={btnCadastrarAutor} eventoTeclado={aoDigitar} cadastrarAutor={cadastrarAutor}/>
-      <TabelaAutores vetor={autores}/>
+      <Autor botao={btnCadastrarAutor} eventoTeclado={aoDigitar} cadastrarAutor={cadastrarAutor} obj={objAutor}/>
+      <TabelaAutores vetor={autores} selecionar={selecionarAutor}/>
     </div>
   );
 }
