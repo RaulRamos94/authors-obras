@@ -1,4 +1,4 @@
-function TabelaAutores({vetor, selecionar}) {
+function ViewAutores({vetor, selecionar}) {
 
     return(
        <table className="table">
@@ -36,4 +36,4 @@ function TabelaAutores({vetor, selecionar}) {
     
 }
 
-export default TabelaAutores;
+export default ViewAutores;

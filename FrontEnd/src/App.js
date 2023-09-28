@@ -1,7 +1,8 @@
 import './App.css';
 import {useEffect, useState} from 'react';
-import Autor from './Autores/CRUD/Cadastrar';
-import TabelaAutores from './Autores/CRUD/TabelaAutores';
+import Formulario from './Autores/Formulario';
+import ViewAutores from './Autores/ViewAutores';
+
 
 function App() {
 
@@ -52,24 +53,93 @@ function App() {
   const aoDigitar = (e) => {
     setObjAutor({...objAutor, [e.target.name]:e.target.value});
   }
+  
+  //Alterar autor
+  const atualizarAutor = () => {
+    fetch("http://localhost:8080/authors/atualizarAutor",{
+      method: "put",
+      body: JSON.stringify(objAutor),
+      headers:{
+        "Content-type":"application/json",
+        "Accept":"application/json"
+      }
+    })
+    .then(retorno => retorno.json())
+    .then(retornoConvertido =>{
+
+      if (retornoConvertido.mensagem !== undefined){
+        alert(retornoConvertido.mensagem)
+      }else{
+        alert("Autor alterado com sucesso!")
+
+        //Cópia Vetor de produtos
+        let vetorTempo = [...autores];
+
+        //Indice
+        let indice = vetorTempo.findIndex((p) => {
+        return p.idAutor === objAutor.idAutor;
+        });
+
+        //Alterar Autor do vetorTempo
+        vetorTempo[indice] = objAutor;
+
+        //Atualizar o vetor autores
+        setAutores(vetorTempo);
+        limparFormulario();
+      }
+    })
+  }
+
+  //Excluir Autor
+  const excluirAutor = () => {
+    fetch("http://localhost:8080/authors/excluirAutor/"+objAutor.idAutor,{
+      method: "delete",
+      headers:{
+        "Content-type":"application/json",
+        "Accept":"application/json"
+      }
+    })
+    .then(retorno => retorno.json())
+    .then(retornoConvertido =>{
+
+      //Mensagem
+      alert("Autor excluido com sucesso!")
+
+      //Cópia Vetor de produtos
+      let vetorTempo = [...autores];
+
+      //Indice
+      let indice = vetorTempo.findIndex((p) => {
+        return p.idAutor === objAutor.idAutor;
+      });
+
+      //Remover Autor vetorTempo
+      vetorTempo.splice(indice, 1);
+
+      //Atualizar o vetor autores
+      setAutores(vetorTempo);
+
+      //Limpar Formulario
+      limparFormulario();
+    })
+  }
 
   //Limpar Formulario
   const limparFormulario = ()=> {
+    setBtnCadastrar(true);
     setObjAutor(autor);
   }
   
+  //Selecionar Autor
   const selecionarAutor = (indice) => {
     setObjAutor(autores[indice]);
     setBtnCadastrar(false);
   }
 
-
-
-
   return (
     <div>
-      <Autor botao={btnCadastrarAutor} eventoTeclado={aoDigitar} cadastrarAutor={cadastrarAutor} obj={objAutor}/>
-      <TabelaAutores vetor={autores} selecionar={selecionarAutor}/>
+      <Formulario botao={btnCadastrarAutor} eventoTeclado={aoDigitar} cadastrarAutor={cadastrarAutor} obj={objAutor} cancelar={limparFormulario} alterar={atualizarAutor}  remover={excluirAutor}/>
+      <ViewAutores vetor={autores} selecionar={selecionarAutor}/>
     </div>
   );
 }

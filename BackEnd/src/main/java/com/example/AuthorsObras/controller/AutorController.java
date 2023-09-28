@@ -46,7 +46,7 @@ public class AutorController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    @PutMapping("/{id}") //Atualizar cadastro do Autor por Id
+    @PutMapping(value = "/atualizarAutor/{id}")//Atualizar cadastro do Autor por Id
     public ResponseEntity<Autor> atualizarAutor(@PathVariable("id") Long id, @RequestBody Autor autor){
         Optional<Autor> autorExistente = autorRepository.findById(id);
 
@@ -65,7 +65,7 @@ public class AutorController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
     
-    @DeleteMapping("/{id}") //Excluir autor por Id
+    @DeleteMapping(value = "/excluirAutor/{id}") //Excluir autor por Id
     public ResponseEntity<String> excluirAutor(@PathVariable Long id){
         Optional<Autor> autor = autorRepository.findById(id);
 

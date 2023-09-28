@@ -1,4 +1,4 @@
-function CadastrarAutor({botao, eventoTeclado, cadastrarAutor, obj}) {
+function Formulario({botao, eventoTeclado, cadastrarAutor, obj, cancelar, alterar, remover}) {
     return(
         <form>
             <input type="text" value={obj.nome} onChange={eventoTeclado} name="nome"  placeholder="Nome" className="form-control"/>
@@ -11,14 +11,13 @@ function CadastrarAutor({botao, eventoTeclado, cadastrarAutor, obj}) {
             {
                 botao ? <input type="button" value="Cadastrar" onClick={cadastrarAutor} className="btn btn-primary"/> : 
                 <div>
-                    <input type="button" value="Listar" className="btn btn-secondary"/>
-                    <input type="button" value="Alterar" className="btn btn-warning"/>
-                    <input type="button" value="Remover" className="btn btn-danger"/>
-                    <input type="button" value="Cancelar" className="btn btn-secondary"/>
+                    <input type="button" value="Alterar" onClick={alterar} className="btn btn-warning"/>
+                    <input type="button" value="Remover" onClick={remover} className="btn btn-danger"/>
+                    <input type="button" value="Cancelar" onClick={cancelar} className="btn btn-secondary"/>
                 </div>
             } 
         </form>
     )
 }
 
-export default CadastrarAutor;
+export default Formulario;
