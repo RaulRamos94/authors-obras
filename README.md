@@ -1,3 +1,3 @@
-#Autores e suas Obras
+# Autores e suas Obras
 
-API Full desenvolvida em React + Spring para por em pratica o aprendizado adquirido
+Desenvolvimento de uma API utilizando React + Spring para por em pratica o aprendizado adquirido
